@@ -1,0 +1,6 @@
+[09/27/2020 02:43:52 PM] [INFO]: Namespace(batch_size=1, checkpoint_path='model_weights/unet/exp1/epoch_50_27-09-2020_08:30:23.pth', mode='test', save_preds=True, test_dir='data/road_segmentation_ideal/testing', test_img_dir='data/road_segmentation_ideal/testing/input', test_img_size=1500, test_mask_dir='data/road_segmentation_ideal/testing/output')
+[09/27/2020 02:43:52 PM] [INFO]: Test size: 13
+[09/27/2020 02:43:52 PM] [INFO]: Using device: cuda:0
+[09/27/2020 02:43:55 PM] [INFO]: Model weights loaded from path: model_weights/unet/exp1/epoch_50_27-09-2020_08:30:23.pth 
+[09/27/2020 02:43:59 PM] [INFO]: test_loss: 0.2681 test_iou: 0.5806 test_accuracy: 0.9637 test_precision: 0.7525 test_recall: 0.7154 
+[09/27/2020 02:44:00 PM] [INFO]: Predicted masks saved to directory: data/road_segmentation_ideal/testing/predictions

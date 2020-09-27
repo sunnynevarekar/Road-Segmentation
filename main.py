@@ -171,7 +171,7 @@ def test(args):
             os.makedirs(prediction_dir)
 
         for i, pred in enumerate(recorder.val_predictions):
-            filepath = os.path.join(prediction_dir, f'img-{i+1}.png')
+            filepath = os.path.join(prediction_dir, f'{test_ids[i]}_prediction.png')
             pred = pred.cpu().numpy().squeeze()
             pred = ((pred>0.5)*255).astype('uint8')
             Image.fromarray(pred).save(filepath, 'PNG')
