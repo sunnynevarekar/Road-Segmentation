@@ -1,5 +1,6 @@
 import os
 import numpy as np
+from PIL import Image
 import torch
 import torch.nn as nn
 import albumentations as A
@@ -108,6 +109,7 @@ def test(args):
     batch_size = args.batch_size
     test_img_dir = os.path.join(test_dir, 'input')
     test_mask_dir = os.path.join(test_dir, 'output')
+    save_preds = args.save_preds
     args.test_img_dir = test_img_dir
     args.test_mask_dir = test_mask_dir
 
@@ -160,7 +162,21 @@ def test(args):
     #log metric
     logger.log(msg_str)
 
+    #save predicted images if save_preds is true
+    #get the predictions from recorder and save in a directory
+    if save_preds:
+        prediction_dir = os.path.join(test_dir, 'predictions')
+        #create directory if not present
+        if not os.path.exists(prediction_dir):
+            os.makedirs(prediction_dir)
 
+        for i, pred in enumerate(recorder.val_predictions):
+            filepath = os.path.join(prediction_dir, f'img-{i+1}.png')
+            pred = pred.cpu().numpy().squeeze()
+            pred = ((pred>0.5)*255).astype('uint8')
+            Image.fromarray(pred).save(filepath, 'PNG')
+
+        logger.log(f'Predicted masks saved to directory: {prediction_dir}')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Road Segmentation')
@@ -182,6 +198,7 @@ if __name__ == '__main__':
     parser_test.add_argument('--checkpoint_path', type=str, required=True)
     parser_test.add_argument('--test_img_size', type=int, default=1500)
     parser_test.add_argument('--batch_size', type=int, default=1)
+    parser_test.add_argument('--save_preds', action='store_true', default=False)
 
 
     args = parser.parse_args()
