@@ -2,6 +2,11 @@
 
 This repository contains code for training and evaluating a custom Unet model to segment roads from satelite images.
 
+### Dataset
+The dataset can be downloaded from this [kaggle link](https://www.kaggle.com/insaff/massachusetts-roads-dataset). 
+Some of the images in training set does not have corresponding masks. The training code filters out those images.
+All the images are of size 1500x1500. Code of data analysis is in [this notebook](notebooks/data_analysis.ipynb). 
+
 
 ### Model Architecture
 
