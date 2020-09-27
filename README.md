@@ -2,5 +2,7 @@
 
 This repository contains code for training and evaluating a custom Unet model to segment roads from satelite images
 
-![](resources/unet.png)
+<img src="resources/unet.png" width="400" height="400" align="center"/>
+
+
 
