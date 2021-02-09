@@ -1,4 +1,4 @@
-#The model based on https://github.com/milesial/Pytorch-UNet
+#The model is based on https://github.com/milesial/Pytorch-UNet
 #the model architecture is slightly changed 
 import torch
 import torch.nn as nn
